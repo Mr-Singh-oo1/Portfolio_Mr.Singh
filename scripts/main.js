@@ -42,3 +42,21 @@ fetch('assets/certificate/certificate.json')
     });
 
   });
+// Load featured projects from docs.json
+fetch('assets/docs/docs.json')
+  .then(response => response.json())
+  .then(data => {
+    const container = document.getElementById('project-list');
+    data.forEach(doc => {
+      const card = document.createElement('div');
+      card.className = 'project-card';
+      card.innerHTML = `
+        <h3>${doc.title}</h3>
+        <a href="assets/docs/${doc.file}" class="btn" target="_blank">Download</a>
+      `;
+      container.appendChild(card);
+    });
+  })
+  .catch(error => {
+    console.error("Error loading featured projects:", error);
+  });
