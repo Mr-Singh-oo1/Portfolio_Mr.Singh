@@ -27,7 +27,7 @@ type();
 // Theme toggle
 const toggle = document.getElementById
 // Load certificates from certificate.json
-fetch('assets/certificates/certificate.json')
+fetch('assets/certificate/certificate.json')
   .then(response => response.json())
   .then(data => {
     const container = document.getElementById('cert-list');
@@ -36,8 +36,9 @@ fetch('assets/certificates/certificate.json')
       card.className = 'project-card';
       card.innerHTML = `
         <h3>${cert.title}</h3>
-        <a href="assets/certificates/${cert.file}" class="btn" target="_blank">View Certificate</a>
+        <a href="assets/certificate/${cert.file}" class="btn" target="_blank">View Certificate</a>
       `;
       container.appendChild(card);
     });
+
   });
