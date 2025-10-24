@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Manmeet | Data Analyst & Financial Crime Expert</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="assets/icons/favicon.ico" />
+</head>
+<body>
+  <header>
+    <nav>
+      <h1>Manmeet</h1>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#certifications">Certifications</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><button id="themeToggle">🌙</button></li>
+      </ul>
+    </nav>
+    <section class="hero">
+      <h2 id="typewriter"></h2>
+      <p>Designing resilient fraud detection pipelines, automating compliance reporting, and empowering decisions with explainable analytics.</p>
+      <div class="cta-buttons">
+        <a href="assets/docs/resume.pdf" class="btn">Download Resume</a>
+        <a href="#projects" class="btn">View Projects</a>
+        <a href="#contact" class="btn secondary">Contact Me</a>
+      </div>
+    </section>
+  </header>
+
+  <main>
+    <section id="about" class="section">
+      <h2>About Me</h2>
+      <div class="about-content">
+        <img src="assets/images/Manmeet.jpg" alt="Manmeet profile photo" />
+        <div>
+          <p>I am a data analyst and financial crime expert with a track record in fraud detection, BI automation, and strategic risk modeling.</p>
+          <ul>
+            <li>📍 Indore, India</li>
+            <li>🎓 Certifications: Mastercard, Tata, Deloitte</li>
+            <li>🛠️ Tools: Power BI, Python, SQL, R, Excel</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" class="section">
+      <h2>Skills & Tools</h2>
+      <div class="skills-grid">
+        <div><h3>Data Analytics</h3><p>Power BI, SQL, Python, R, Excel</p></div>
+        <div><h3>Fraud Detection</h3><p>Behavioral scoring, velocity features, modular pipelines</p></div>
+        <div><h3>Reporting & BI</h3><p>Automated .docx reports, dashboards, visual storytelling</p></div>
+        <div><h3>Project Hygiene</h3><p>Modular code, reproducible workflows, defensive programming</p></div>
+        <div><h3>Strategic Modeling</h3><p>Risk tiering, audit logic, operational clarity</p></div>
+      </div>
+    </section>
+
+    <section id="projects" class="section">
+      <h2>Featured Projects</h2>
+      <div id="project-list" class="card-list"></div>
+    </section>
+
+    <section id="certifications" class="section">
+      <h2>Certifications</h2>
+      <div id="cert-list" class="card-list"></div>
+    </section>
+
+    <section id="contact" class="section">
+      <h2>Contact Me</h2>
+      <form action="https://formspree.io/f/yourformid" method="POST">
+        <input type="text" name="name" placeholder="Your Name" required />
+        <input type="email" name="email" placeholder="Your Email" required />
+        <textarea name="message" placeholder="Your Message" required></textarea>
+        <button type="submit" class="btn">Send Message</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 Manmeet | Built with clarity and impact</p>
+  </footer>
+
+  <script src="scripts/main.js"></script>
+</body>
+</html>
