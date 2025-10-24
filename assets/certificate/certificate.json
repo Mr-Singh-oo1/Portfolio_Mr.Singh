@@ -8,8 +8,8 @@
     "file": "Deloitte Data Analytics Certificate.pdf"
   },
   {
-    "title": "Mastercard Cyber Security Certificate (.pptx)",
-    "file": "Mastercard Cyber Security Certificate.pptx"
+    "title": "Mastercard Cyber Security Certificate (.pdf)",
+    "file": "Mastercard Cyber Security Certificate.pdf"
   },
   {
     "title": "Tata Cyber Security Certificate (.pdf)",
@@ -18,5 +18,10 @@
   {
     "title": "Tata Data Visualisation Certificate (.pdf)",
     "file": "Tata Data Visualisation Certificate.pdf"
+  },
+  {
+    "title": "LCAT Certificate (.pdf)",
+    "file": "LCAT Certificate.pdf"
   }
+
 ]
