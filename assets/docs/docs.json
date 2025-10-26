@@ -1,19 +1,31 @@
 [
   {
-    "title": "Fraud Transaction Analysis (.pdf)",
-    "file": "fraud-transaction-analysis-report.pdf"
+    "title": "Fraud Transaction Identification Pipeline",
+    "description": "Designed a modular fraud detection pipeline integrating velocity scoring, behavioral anomaly flags, and compliance reporting. Automated data ingestion, scoring logic, and dashboard visualization using Python, SQL, and R. Built dynamic Power BI dashboards and structured reporting assets for stakeholder review. Employed advanced Excel for exploratory analysis and GitHub for version control and documentation.",
+    "tools": ["Python", "SQL", "R", "Power BI", "Excel", "GitHub"],
+    "file": "fraud-report.pdf",
+    "image": "fraud-report-thumbnail.png"
   },
   {
-    "title": "Loan Report Dashboard (.pdf)",
-    "file": "loan-report-dashboard.pdf"
+    "title": "Fraud Transaction Analysis",
+    "description": "Built an end-to-end fraud analytics dashboard integrating DAX-driven KPIs, loyalty tier segmentation, and device-level fraud insights. Automated MoM comparisons, CMTD/PMTD metrics, and dynamic card labeling using Power BI and advanced DAX. Enabled regional and hourly fraud breakdowns with Esri-powered maps and interactive visuals. Structured reporting logic using SQL, Python, and Excel for data prep and validation.",
+    "tools": ["Power BI", "DAX", "SQL", "Python", "Excel", "Esri"],
+    "file": "fraud-transaction-analysis-report.pdf",
+    "image": "fraud-transaction-analysis-report-thumbnail.png"
   },
   {
-    "title": "Fraud Pipeline Presentation (.pdf)",
-    "file": "fraud-report.pdf"
+    "title": "Loan Report Analysis",
+    "description": "Developed a comprehensive loan portfolio dashboard to monitor lending performance, risk segmentation, and financial health. Used SQL for KPI extraction, DAX for dynamic card labeling, and Power BI for interactive visuals across loan status, purpose, term, and geography. Automated MoM and MTD metrics, interest rate and DTI tracking, and good vs bad loan segmentation. Enabled granular breakdowns by employee length, home ownership, and state-level funding trends.",
+    "tools": ["Power BI", "SQL", "DAX", "Excel"],
+    "file": "loan-report-dashboard.pdf",
+    "image": "loan-report-dashboard-thumbnail.png"
   },
   {
-    "title": "Coffee Shop Analysis (.pdf)",
-    "file": "coffee-shop-analysis.pdf"
+    "title": "Coffee Shop Analysis",
+    "description": "Built an interactive retail analytics dashboard to monitor sales, orders, and quantity trends across multiple store locations. Leveraged Power BI, DAX, and SQL to compute KPIs, MoM growth, and dynamic labels. Integrated calendar heatmaps, hourly sales patterns, and product-level segmentation to uncover customer behavior. Validated metrics using SQL scripts and modeled data for robust BI automation and stakeholder-ready insights.",
+    "tools": ["Power BI", "DAX", "SQL", "Excel", "Data Modeling", "BI Automation"],
+    "file": "Coffee-Shop-analysis.pdf",
+    "image": "Coffee-Shop-analysis-thumbnail.png"
   }
-
 ]
+
