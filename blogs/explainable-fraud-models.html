@@ -12,20 +12,55 @@
       margin: 0;
       background: #0f0f0f;
       color: #f0f0f0;
+      overflow-x: hidden;
     }
-    header {
-      text-align: center;
-      padding: 4rem 2rem;
-      background: linear-gradient(135deg, #1f1f1f, #2a2a2a);
+
+    #mystery-bg,
+    #starfield {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
     }
-    header h1 {
-      font-size: 3rem;
-      animation: pulse 2s infinite;
+    .mystery-header {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: #0f0f0f;
     }
-    header p {
-      font-size: 1.2rem;
-      color: #ccc;
+
+    .mystery-header canvas#mystery-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
     }
+
+    .mystery-header .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(ellipse at center, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.95) 100%);
+    z-index: 1;
+    }
+
+    .mystery-header h1,
+    .mystery-header p {
+    position: relative;
+    z-index: 2;
+    }
+    
     section {
       padding: 2rem;
       max-width: 1000px;
@@ -37,15 +72,31 @@
       padding: 1.5rem;
       margin-bottom: 2rem;
       box-shadow: 0 0 10px rgba(255,255,255,0.05);
-      transition: transform 0.3s ease;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
     .card:hover {
       transform: scale(1.02);
+      box-shadow: 0 0 20px rgba(0, 255, 204, 0.1);
     }
     .card img {
       max-width: 100%;
       border-radius: 8px;
       margin-top: 1rem;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .card img:hover {
+      transform: scale(1.03);
+      box-shadow: 0 0 15px rgba(0, 255, 204, 0.3);
+    }
+    .card {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .card.visible {
+    opacity: 1;
+    transform: translateY(0);
     }
     .metrics {
       display: flex;
@@ -74,16 +125,20 @@
       margin-top: 1.5rem;
     }
     .cta a {
+      display: inline-block;
+      margin: 0.5rem;
       background: #00ffcc;
       color: #000;
       padding: 0.8rem 1.5rem;
       border-radius: 8px;
       text-decoration: none;
       font-weight: bold;
-      transition: background 0.3s ease;
+      transition: all 0.3s ease;
     }
     .cta a:hover {
       background: #00ddb3;
+      transform: scale(1.05);
+      box-shadow: 0 0 10px #00ffcc;
     }
     footer {
       text-align: center;
@@ -95,9 +150,11 @@
 </head>
 <body>
 
-<header>
-  <h1 class="animate__animated animate__fadeInDown">Detecting Fraud with Behavioral Intelligence</h1>
-  <p class="animate__animated animate__fadeInUp">A data-driven journey from raw transactions to high-risk alerts</p>
+<header class="mystery-header">
+  <canvas id="starfield"></canvas>
+  <div class="overlay"></div>
+  <h1>Detecting Fraud with Behavioral Intelligence</h1>
+  <p>Uncovering the unseen. Decoding fraud in real time.</p>
 </header>
 
 <section>
@@ -105,6 +162,21 @@
     <h2>📦 Project Overview</h2>
     <p>This fraud detection pipeline analyzes behavioral patterns, velocity features, and geo-distance anomalies to flag high-risk transactions. It combines domain logic with machine learning to produce precision alerts.</p>
     <img src="../image/fraud_pipeline_pipeline_run.png" alt="Pipeline Execution Screenshot" />
+  </div>
+
+  <div class="card animate__animated animate__fadeInUp">
+    <h2>🔍 How the Pipeline Works</h2>
+    <p>This pipeline is designed to detect fraudulent transactions using a blend of behavioral analytics, velocity features, and anomaly detection. Here's how it works:</p>
+    <ol>
+      <li><strong>Data Ingestion:</strong> Loads raw transaction data from Parquet or CSV format, including timestamps, user IDs, amounts, and device metadata.</li>
+      <li><strong>Preprocessing:</strong> Cleans missing values, converts timestamps, and normalizes numeric fields like amount and geo-coordinates.</li>
+      <li><strong>Feature Engineering:</strong> Adds velocity features (e.g. transactions per hour/day), behavioral metrics (typing speed, navigation speed), and geo-distance calculations.</li>
+      <li><strong>Fraud Scoring:</strong> Applies a trained XGBoost model to assign a fraud probability score to each transaction.</li>
+      <li><strong>Thresholding:</strong> Filters transactions using a top-k threshold (e.g. 1%) to isolate the most suspicious cases.</li>
+      <li><strong>Alert Generation:</strong> Flags high-risk transactions and saves them to <code>fraud-pipeline-alerts.csv</code> for review.</li>
+      <li><strong>EDA Reporting:</strong> Generates a Word report with summary statistics, visualizations, and insights to support audit and analysis.</li>
+    </ol>
+    <p>The pipeline is modular, reproducible, and designed for real-time fraud detection in high-volume environments.</p>
   </div>
 
   <div class="card animate__animated animate__fadeInUp">
@@ -185,7 +257,6 @@
     <p>Explore the full pipeline on GitHub or connect with me on LinkedIn:</p>
     <div class="cta">
       <a href="https://github.com/Mr-Singh-oo1/fraud-detection-behavioural" target="_blank">GitHub Repository</a>
-      <br/><br/>
       <a href="https://www.linkedin.com/in/manmeet-singh-182469233/" target="_blank">LinkedIn Profile</a>
     </div>
   </div>
@@ -195,5 +266,103 @@
   Built by Manmeet Singh · Powered by behavioral intelligence · © 2025
 </footer>
 
+<script>
+// 🌌 STARFIELD + SUPERNOVA BACKGROUND
+const canvas = document.getElementById('starfield');
+const ctx = canvas.getContext('2d');
+let stars = [], particles = [];
+
+function resizeCanvas() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+window.addEventListener('resize', resizeCanvas);
+resizeCanvas();
+
+class Star {
+  constructor() {
+    this.reset();
+  }
+  reset() {
+    this.x = Math.random() * canvas.width;
+    this.y = Math.random() * canvas.height;
+    this.size = Math.random() * 1.5 + 0.5;
+    this.speed = Math.random() * 0.3 + 0.1;
+    this.alpha = Math.random() * 0.5 + 0.3;
+  }
+  update() {
+    this.y += this.speed;
+    if (this.y > canvas.height) this.reset();
+  }
+  draw() {
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(255,255,255,${this.alpha})`;
+    ctx.fill();
+  }
+}
+
+class Particle {
+  constructor() {
+    this.reset();
+  }
+  reset() {
+    this.x = Math.random() * canvas.width;
+    this.y = Math.random() * canvas.height;
+    this.radius = Math.random() * 2 + 1;
+    this.alpha = Math.random() * 0.5 + 0.1;
+    this.speed = Math.random() * 0.5 + 0.2;
+  }
+  update() {
+    this.y -= this.speed;
+    if (this.y < 0) this.reset();
+  }
+  draw() {
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(0, 255, 204, ${this.alpha})`;
+    ctx.fill();
+  }
+}
+
+for (let i = 0; i < 150; i++) stars.push(new Star());
+for (let i = 0; i < 100; i++) particles.push(new Particle());
+
+function drawSupernova() {
+  const gradient = ctx.createRadialGradient(
+    canvas.width / 2, canvas.height / 2, 0,
+    canvas.width / 2, canvas.height / 2, canvas.width / 3
+  );
+  gradient.addColorStop(0, 'rgba(0,255,204,0.2)');
+  gradient.addColorStop(1, 'rgba(0,0,0,0)');
+  ctx.fillStyle = gradient;
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+}
+
+function animateBackground() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  drawSupernova();
+  stars.forEach(s => { s.update(); s.draw(); });
+  particles.forEach(p => { p.update(); p.draw(); });
+  requestAnimationFrame(animateBackground);
+}
+animateBackground();
+
+// 📦 SCROLL-TRIGGERED CARD POP-UP
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.2 });
+
+document.querySelectorAll('.card').forEach(card => {
+  observer.observe(card);
+});
+</script>
+
 </body>
 </html>
+       
