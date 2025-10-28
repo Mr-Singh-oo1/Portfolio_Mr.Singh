@@ -3,71 +3,197 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Designing an Explainable Fraud Detection Pipeline</title>
-  <link rel="stylesheet" href="../style.css" />
+  <title>Fraud Detection with Behavioral Intelligence</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      background: #0f0f0f;
+      color: #f0f0f0;
+    }
+    header {
+      text-align: center;
+      padding: 4rem 2rem;
+      background: linear-gradient(135deg, #1f1f1f, #2a2a2a);
+    }
+    header h1 {
+      font-size: 3rem;
+      animation: pulse 2s infinite;
+    }
+    header p {
+      font-size: 1.2rem;
+      color: #ccc;
+    }
+    section {
+      padding: 2rem;
+      max-width: 1000px;
+      margin: auto;
+    }
+    .card {
+      background: #1c1c1c;
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 0 10px rgba(255,255,255,0.05);
+      transition: transform 0.3s ease;
+    }
+    .card:hover {
+      transform: scale(1.02);
+    }
+    .card img {
+      max-width: 100%;
+      border-radius: 8px;
+      margin-top: 1rem;
+    }
+    .metrics {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .metric {
+      flex: 1;
+      background: #2a2a2a;
+      padding: 1rem;
+      border-radius: 8px;
+      text-align: center;
+    }
+    .metric h3 {
+      margin: 0;
+      font-size: 1.5rem;
+      color: #00ffcc;
+    }
+    .metric p {
+      margin: 0.5rem 0 0;
+      font-size: 0.9rem;
+      color: #aaa;
+    }
+    .cta {
+      text-align: center;
+      margin-top: 1.5rem;
+    }
+    .cta a {
+      background: #00ffcc;
+      color: #000;
+      padding: 0.8rem 1.5rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background 0.3s ease;
+    }
+    .cta a:hover {
+      background: #00ddb3;
+    }
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.9rem;
+      color: #888;
+    }
+  </style>
 </head>
 <body>
-  <header>
-    <nav>
-      <a href="../index.html">← Back to Portfolio</a>
-    </nav>
-    <h1>Designing an Explainable Fraud Detection Pipeline</h1>
-    <p><em>Posted on October 24, 2025</em></p>
-  </header>
 
-  <main class="section">
-    <h2>Why Explainability Matters</h2>
-    <p>In fraud analytics, accuracy alone isn’t enough. Stakeholders need to understand <strong>why</strong> a transaction was flagged. Black-box models erode trust and complicate audits. My pipeline prioritizes explainability, modularity, and audit readiness.</p>
+<header>
+  <h1 class="animate__animated animate__fadeInDown">Detecting Fraud with Behavioral Intelligence</h1>
+  <p class="animate__animated animate__fadeInUp">A data-driven journey from raw transactions to high-risk alerts</p>
+</header>
 
-    <h2>Pipeline Architecture</h2>
+<section>
+  <div class="card animate__animated animate__fadeInUp">
+    <h2>📦 Project Overview</h2>
+    <p>This fraud detection pipeline analyzes behavioral patterns, velocity features, and geo-distance anomalies to flag high-risk transactions. It combines domain logic with machine learning to produce precision alerts.</p>
+    <img src="../image/fraud_pipeline_pipeline_run.png" alt="Pipeline Execution Screenshot" />
+  </div>
+
+  <div class="card animate__animated animate__fadeInUp">
+    <h2>🧪 Workflow Breakdown</h2>
     <ul>
-      <li>📥 Data Ingestion: Clean, validated transaction data</li>
-      <li>🧪 Feature Engineering: Velocity metrics, behavioral flags</li>
-      <li>🧮 Scoring Logic: Weighted risk tiers with thresholds</li>
-      <li>🚨 Flagging System: Transparent alert logic</li>
-      <li>📊 Reporting Layer: Automated .docx and Power BI dashboards</li>
+      <li>Data ingestion and cleanup</li>
+      <li>Feature engineering: velocity, geo, behavioral</li>
+      <li>Fraud scoring using XGBoost</li>
+      <li>Alert generation with thresholding</li>
     </ul>
-
-    <h2>Key Features</h2>
+    <p>This structure is organized inside <code>portfolio_Mr.Singh/assets/docs</code> with:</p>
     <ul>
-      <li>Velocity scoring and behavioral segmentation</li>
-      <li>Weighted risk tiers: Low, Medium, High</li>
-      <li>Audit-ready outputs with rationale</li>
-      <li>Modular Python and SQL codebase</li>
+      <li><strong>docs.json</strong>: metadata and insights</li>
+      <li><strong>fraud-pipeline-alerts.csv</strong>: top flagged transactions</li>
+      <li><strong>fraud-pipeline-report.docx</strong>: full EDA summary</li>
+      <li><strong>fraud-report.pdf</strong>: presentation slides</li>
     </ul>
+  </div>
 
-    <h2>Sample DAX Logic</h2>
-    <pre><code>
-RiskTier = 
-SWITCH(
-  TRUE(),
-  [VelocityScore] > 0.8 && [MerchantDiversity] < 0.3, "High",
-  [VelocityScore] > 0.5, "Medium",
-  "Low"
-)
-    </code></pre>
+  <div class="card animate__animated animate__fadeInUp">
+    <h2>📊 Model Evaluation Metrics</h2>
+    <div class="metrics">
+      <div class="metric">
+        <h3>0.5718</h3>
+        <p>PR-AUC</p>
+      </div>
+      <div class="metric">
+        <h3>0.5274</h3>
+        <p>ROC-AUC</p>
+      </div>
+      <div class="metric">
+        <h3>0.8165</h3>
+        <p>Precision@1%</p>
+      </div>
+      <div class="metric">
+        <h3>0.9925</h3>
+        <p>Top-k Threshold</p>
+      </div>
+    </div>
+    <img src="../image/fraud_pipeline_model_metrics.png" alt="Model Metrics Screenshot" />
+  </div>
 
-    <h2>Results & Impact</h2>
-    <ul>
-      <li>✅ Reduced false positives by 27%</li>
-      <li>✅ Improved audit traceability</li>
-      <li>✅ Enabled real-time alerts</li>
-      <li>✅ Delivered stakeholder-ready reports</li>
-    </ul>
+  <div class="card animate__animated animate__fadeInUp">
+    <h2>🚨 Top Flagged Alerts</h2>
+    <p>These transactions were flagged with the highest fraud scores:</p>
+    <img src="../image/fraud_pipeline_alerts_preview.png" alt="Top Alerts Screenshot" />
+    <div class="cta">
+      <a href="../docs/fraud-pipeline-alerts.csv" download>Download Full Alerts CSV</a>
+    </div>
+  </div>
 
-    <h2>Resources</h2>
-    <ul>
-      <li><a href="../assets/docs/fraud-report.docx">Download Full Report (.docx)</a></li>
-      <li><a href="../assets/docs/fraud-pipeline-presentation.pptx">Download Presentation (.pptx)</a></li>
-      <li><a href="../assets/docs/loan-report-dashboard.pdf">View Dashboard PDF</a></li>
-    </ul>
+  <div class="card animate__animated animate__fadeInUp">
+    <h2>📈 EDA Highlights</h2>
+    <p>Charts and insights from the exploratory analysis:</p>
+    <img src="../image/fraud_pipeline_eda_chart_1.png" alt="EDA Chart 1" />
+    <img src="../image/fraud_pipeline_eda_chart_2.png" alt="EDA Chart 2" />
+  </div>
 
-    <h2>Final Thoughts</h2>
-    <p>Fraud detection isn’t just about catching anomalies — it’s about building trust. This pipeline empowers decision-makers with clarity, transparency, and strategic insight.</p>
-  </main>
+  <div class="card animate__animated animate__fadeInUp">
+    <h2>📄 Report Preview</h2>
+    <p>The full EDA report includes summary statistics, feature distributions, and visual insights.</p>
+    <img src="../image/fraud_pipeline_fraud_report_preview.png" alt="Word Report Screenshot" />
+    <div class="cta">
+      <a href="../docs/fraud-pipeline-report.docx" download>Download Full Report</a>
+    </div>
+  </div>
 
-  <footer>
-    <p>© 2025 Manmeet | Strategic Analytics Blog</p>
-  </footer>
+  <div class="card animate__animated animate__fadeInUp">
+    <h2>📊 Presentation Overview</h2>
+    <p>This PDF presentation summarizes the pipeline architecture, key features, and evaluation metrics in a slide-based format — perfect for sharing with stakeholders or showcasing in interviews.</p>
+    <div class="cta">
+      <a href="../docs/fraud-report.pdf" download>Download Presentation PDF</a>
+    </div>
+  </div>
+
+  <div class="card animate__animated animate__fadeInUp">
+    <h2>🔗 Connect & Explore</h2>
+    <p>Explore the full pipeline on GitHub or connect with me on LinkedIn:</p>
+    <div class="cta">
+      <a href="https://github.com/Mr-Singh-oo1/fraud-detection-behavioural" target="_blank">GitHub Repository</a>
+      <br/><br/>
+      <a href="https://www.linkedin.com/in/manmeet-singh-182469233/" target="_blank">LinkedIn Profile</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  Built by Manmeet Singh · Powered by behavioral intelligence · © 2025
+</footer>
+
 </body>
 </html>
